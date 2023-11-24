@@ -29,7 +29,7 @@ uint8_t SELECT_APDU[] = {
 
 static const String API_URL = "https://u0uz5ogpyf.execute-api.us-east-1.amazonaws.com/dev";
 
-const uint8_t LED_SUCCESS = D5, LED_FAIL = D6, LED_LOADING = D7, LED_POWER = D8;
+const uint8_t LED_SUCCESS = D5, LED_FAIL = D6, LED_LOADING = D7, LED_POWER = D8, ENGINE = D4;
 
 static bool loading = true;
 
@@ -125,6 +125,7 @@ void setupConnection()
   Serial.println(jsonData);
 
   pinMode(LED_SUCCESS, OUTPUT);
+  pinMode(ENGINE, OUTPUT);
   pinMode(LED_FAIL, OUTPUT);
 
   int res = NetClient::post(
@@ -148,8 +149,10 @@ void successLED()
 {
   turnOffLEDS();
   digitalWrite(LED_SUCCESS, HIGH);
+  digitalWrite(ENGINE, HIGH);
   delay(5000);
   digitalWrite(LED_SUCCESS, LOW);
+  digitalWrite(ENGINE, LOW);
 }
 
 void failureLED()
