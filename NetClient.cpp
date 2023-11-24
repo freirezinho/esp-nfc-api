@@ -3,10 +3,9 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-// const char *NetClient::password = "impacta2021";
-const char *NetClient::password = "@#viper125273@#";
-const char *NetClient::ssid = "Lili-2G";
-// const char *NetClient::ssid = "Faculdade Impacta v2";
+const char *NetClient::password = "impacta2021";
+const char *NetClient::ssid = "Faculdade Impacta v2";
+
 std::unique_ptr<BearSSL::WiFiClientSecure>client(new BearSSL::WiFiClientSecure);
 HTTPClient https;
 

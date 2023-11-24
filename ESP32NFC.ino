@@ -29,7 +29,7 @@ uint8_t SELECT_APDU[] = {
 
 static const String API_URL = "https://u0uz5ogpyf.execute-api.us-east-1.amazonaws.com/dev";
 
-const uint8_t LED_SUCCESS = D6, LED_FAIL = D5, LED_LOADING = D7, LED_POWER = D8;
+const uint8_t LED_SUCCESS = D5, LED_FAIL = D6, LED_LOADING = D7, LED_POWER = D8;
 
 static bool loading = true;
 
@@ -148,7 +148,7 @@ void successLED()
 {
   turnOffLEDS();
   digitalWrite(LED_SUCCESS, HIGH);
-  delay(2000);
+  delay(5000);
   digitalWrite(LED_SUCCESS, LOW);
 }
 
@@ -196,6 +196,7 @@ void setup()
   pinMode(LED_FAIL, OUTPUT);
   pinMode(LED_POWER, OUTPUT);
   pinMode(LED_LOADING, OUTPUT);
+  // digitalWrite(LED_POWER, HIGH);
   setupConnection();
   startNFCLowLevelCommunication();
 }
@@ -204,5 +205,18 @@ void setup()
 void loop()
 {
   ESPAndroidCommunicationLoop();
+    // digitalWrite(LED_SUCCESS, HIGH);
+    // digitalWrite(LED_LOADING, HIGH);
+    // digitalWrite(LED_FAIL, HIGH);
+  // loadingLED();
+  // delay(1000);
+
+    // digitalWrite(LED_SUCCESS, LOW);
+    // digitalWrite(LED_LOADING, LOW);
+    // digitalWrite(LED_FAIL, LOW);
+  // successLED();
+  // delay(1000);
+  // confusionLED();
+  // delay(1000);
   delay(50);
 }
